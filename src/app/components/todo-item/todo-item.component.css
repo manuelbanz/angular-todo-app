@@ -1,3 +1,35 @@
 .is-completed {
   text-decoration: line-through;
 }
+
+.notes {
+  display: flex;
+  padding: 7px 14px;
+  background: whitesmoke;
+margin: 10px 0;
+}
+
+.notes .checkbox-container {
+  float: left;
+  margin: 5px;
+}
+
+.notes .note-container {
+  float: left;
+  text-align: left;
+  margin: 5px;
+  width: 400px;
+}
+
+.notes .button-container {
+  float: left;
+  margin: 5px;
+}
+
+.notes .button-container button {
+  font-weight: bold;
+  font-size: 15px;
+  color: red;
+border: none;
+background: whitesmoke;
+}

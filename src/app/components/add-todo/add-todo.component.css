@@ -1,0 +1,13 @@
+.item input[type="text"] {
+  width: 60%;
+  height: 60px;
+  margin: 10px;
+
+}
+
+.item input[type="submit"] {
+  width: 63%;
+  height: 40px;
+  margin: 10px;
+  font-weight: bold;
+}
