@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../models/Todo';
-import { TodoService } from '../../services/todo.service';
+import { FirestoreService } from '../../services/firestore.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,27 +11,22 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodosComponent implements OnInit {
 
-  todos:Todo[];
+  todos: Observable<Todo[]>;
 
-  constructor(private todoService: TodoService) {}
+  constructor(private firestoreService: FirestoreService) {}
 
   ngOnInit() {
-    this.todoService.getTodos().subscribe(todos => {
-      this.todos = todos;
-    });
+    this.todos = this.firestoreService.getTodos();
 
   }
 
   deleteTodo(todo: Todo) {
-    this.todos = this.todos.filter(t => t.id !== todo.id);
-    this.todoService.deleteTodo(todo).subscribe();
-    console.log("delete");
+    this.firestoreService.deleteTodo(todo);
   }
 
   addTodo(todo: Todo) {
-    this.todoService.addTodo(todo).subscribe(todo => {
-      this.todos.push(todo);
-    })
+    if (todo.title && todo.title.trim().length) {
+      this.firestoreService.addNewTodo(todo);
+    }
   }
-
 }

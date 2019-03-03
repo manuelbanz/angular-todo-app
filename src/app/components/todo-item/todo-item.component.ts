@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { Todo } from '../../models/Todo';
-import { TodoService } from 'src/app/services/todo.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -11,7 +11,7 @@ export class TodoItemComponent implements OnInit {
   @Input() todo: Todo;
   @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
-  constructor(private todoService:TodoService) { }
+  constructor(private firestoreService: FirestoreService) { }
 
   ngOnInit() {
   }
@@ -25,18 +25,15 @@ export class TodoItemComponent implements OnInit {
     return classes;
   }
 
-  onToggle(todo) {
+  onToggle(todo: Todo) {
     //toggle in UI
     todo.completed = !todo.completed;
 
-    //toggle on Server
-    this.todoService.toggleCompleted(todo).subscribe(
-      todo => console.log(todo)
-    );
-
+    //toggle on server
+    this.firestoreService.updateTodo(todo);
   }
 
-  onDelete(todo) {
+  onDelete(todo: Todo) {
     this.deleteTodo.emit(todo);
   }
 
