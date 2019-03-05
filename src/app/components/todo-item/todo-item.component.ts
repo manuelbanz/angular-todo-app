@@ -16,18 +16,9 @@ export class TodoItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  setClasses() {
-    let classes = {
-      todo: true,
-      'is-completed': this.todo.completed
-    }
-
-    return classes;
-  }
-
   onToggle(todo: Todo) {
     //toggle in UI
-    todo.completed = !todo.completed;
+    this.todo.completed = !todo.completed;
 
     //toggle on server
     this.firestoreService.updateTodo(todo);

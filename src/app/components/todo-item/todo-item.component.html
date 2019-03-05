@@ -1,12 +1,11 @@
 <div>
   <div class="notes">
     <div class="checkbox-container">
-      <input (change)="onToggle(todo)" type="checkbox" />
+      <input (change)="onToggle(todo)" [ngModel]="todo.completed" type="checkbox" />
     </div>
-    <div [ngClass]="setClasses()" class="note-container">
+    <div [class.is-completed]="todo.completed" class="note-container">
 
     {{ todo.title }}
-
 
     </div>
     <div class="button-container">

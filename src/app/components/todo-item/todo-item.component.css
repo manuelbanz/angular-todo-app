@@ -2,11 +2,15 @@
   text-decoration: line-through;
 }
 
+.is-checked {
+  
+}
+
 .notes {
   display: flex;
   padding: 7px 14px;
   background: whitesmoke;
-margin: 10px 0;
+  margin: 10px 0;
 }
 
 .notes .checkbox-container {
@@ -30,6 +34,6 @@ margin: 10px 0;
   font-weight: bold;
   font-size: 15px;
   color: red;
-border: none;
-background: whitesmoke;
+  border: none;
+  background: whitesmoke;
 }
